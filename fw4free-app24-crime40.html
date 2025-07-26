@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+<title> fw4free-app24-crime40 </title>
+<meta charset='UTF-8' />
+
+
+<link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+
+	
+<!-- Styles of Puerto Responsive Flat Buttons -->
+<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+	
+<!-- Font awesome -->
+<link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+
+<!-- start plugins -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://playtvthai.github.io/m3u8/js/jquery-1.11.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel='stylesheet' type='text/css'>
+
+<script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+<script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+<style type="text/css">
+
+.overlay {
+    z-index: 5;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    position:absolute;
+    text-align:left;
+	background-color:rgba(255,255,255,0);
+}
+
+.overlay-flag {
+    position:absolute;
+    z-index: 6;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-align:right;
+	background-color:rgba(255,255,255,0);
+
+}
+
+
+.overlay2 {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    position:absolute;
+    text-align:left;
+	background-color:rgba(0,0,0,0.5);
+	height:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:5px;
+	width:100%;
+	margin-left:0px;
+	margin-top:35px;
+}
+.login_botton {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+	border-radius: 4px;
+}
+
+.live_botton {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+	border-radius: 4px;
+}
+
+.login_txt {
+	border: #0A0A0A;
+	color: black;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	width:150px;
+    margin-top: -6px;
+
+}
+
+input:focus {
+	outline: none !important;
+	border-color: #F7AA06;
+	box-shadow: 0 0 0 5px #F7AA06;
+	border-radius: 2px
+}
+
+button:focus {
+	outline: none !important;
+	border-color: #F7AA06;
+	box-shadow: 0 0 0 5px #F7AA06;
+	border-radius: 2px;
+}
+
+a:focus img{
+	outline: none !important;
+	box-shadow: 0 0 0 5px #F7AA06;
+	border-radius: 2px;
+
+}
+
+.box-flag {
+	border: 0px;
+	background-color: rgba(255,255,255,0.0);
+	display: inline-block;
+}
+
+
+
+</style>
+<link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+<link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+  <style>
+  .modal-header {
+    background-color: #111;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  
+.group {
+  margin-bottom: 30px;
+}
+.group label {
+  font-size: 24px;
+}
+.group2 label {
+  font-size: 20px;
+}
+  
+  input[type='text'] { font-size: 24px; }
+  
+  </style>
+
+
+
+
+</div>
+ 
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+
+$(document).ready(function(){
+  $("#myBtn2").click(function(){
+    $("#myModal2").modal();
+  });
+});
+
+$(document).ready(function(){
+  $("#myBtn_vip").click(function(){
+    $("#myModal_vip").modal();
+  });
+});
+
+$(document).ready(function(){
+  $("#myBtn_cpass").click(function(){
+    $("#myModal_changepass").modal();
+  });
+});
+</script>
+
+<style type="text/css">
+.footer 
+{
+    text-align: center;
+    position : absolute;
+    bottom : -20;
+    width:99%;
+    height : 56px;
+    margin-top : 50px;
+  }
+</style>
+</header>
+	
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>       
+
+
+										
+  <div class="container" style="background-color:rgba(0,0,0,0.0); height:100%;">
+     <div class="container_wrap">
+     	<div class="row" style="background-color:#27282c;border-radius:5px">
+        	<div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+            	<div class="row" >
+			<div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+				<div class="logo">
+				</div>
+			</div>
+
+
+		<div class="col-lg-10 col-md-12 col-xs-12">
+		<div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding-top:0px;padding-bottom:5px;padding-left:5px;padding-right:5px">
+            <form class="form-inline">
+                <div class="form-group" style="margin:5px;">
+
+                
+					<form action="" method="get" name="lange">
+						<input name="lange" type="hidden" id="lange" value="en">
+						<input type="image" src="/web/images/en.gif" name="submit" width="30" height="2%" alt="submit"/>
+					</form>	
+
+
+	<!--div class="form-group"-->
+	<label for="form-password"><font color='white'>ชื่อ :  </font><font color='yellow'>[ ผู้เฒ่าพเนจร ™ ]</font></label>
+	<!--/div-->
+
+										
+    <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:digital'"></i> 🏠 Home ™ </button>
+                   
+	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:live'"></i> 📡 ถ่ายทอดสด ™</button>
+	
+	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-serie'"></i> 🎞️ ดูซีรี่ย์ ™ </button>
+					
+	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-movie'"></i>🎥 ดูหนัง ™  </button>					
+					
+	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-movie'"></i>📽️ ดูสารคดี ™ </button>					
+					
+	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='http://action_exit'"></i>🚪 ออก</button>					
+
+
+
+-------------------------------------------------------------------------------------------------
+
+
+        <div class="col-lg-9 col-md-9 col-xs-9" style="width:135%;padding-left:0px;padding-right:0px;">
+        <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+
+
+          
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191126112106The Canton Godfather เจ้าพ่อกวางตุ้ง.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the-canton-godfather/the-canton-godfather-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Canton Godfather เจ้าพ่อกวางตุ้ง</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401193816Revolver เกมปล้นโกง.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/revolver/revolver-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Revolver เกมปล้นโกง</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401192621Blood เลือดล้างเหลี่ยมคน.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/blood/blood-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Blood เลือดล้างเหลี่ยมคน</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401190458The Man Inside สังเวียนโหด เดิมพันชีวิต.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the-man-inside/the-man-inside-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Man Inside สังเวียนโหด เดิมพันชีวิต</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200121112956Sick Nurses สวยลากไส้.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/sick-nurses/sick-nurses-th-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Sick Nurses สวยลากไส้</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401184720Officer Down งานดุ ดวลเดือด.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/officer-down/officer-down-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Officer Down งานดุ ดวลเดือด</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401163039Through The Eye ซ้อนแผนซ่อนแค้น.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/through-the-eye/through-the-eye-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Through The Eye ซ้อนแผนซ่อนแค้น</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200401114824Pawn รุกฆาตคนปล้นคน.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/pawn/pawn_th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Pawn รุกฆาตคนปล้นคน</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200116135403Necromancer จอมขมังเวทย์.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/necromancer/necromancer-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Necromancer จอมขมังเวทย์</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/202001161345425537.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/pattaya-maniac/pattaya-maniac-th-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Pattaya Maniac สายล่อฟ้า</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191114142816Fireman Sam  Mandy at Sea & other stories - แซมยอดตำรวจดับเพลิง ชุด ลูกค้ารายที่หนึ่งล้าน.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/fireman-sam-mandy-at-sea/fireman-sam-mandy-at-sea-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Fireman Sam : Mandy at Sea & other stories - แซมยอดตำรวจดับเพลิง ชุด ลูกค้ารายที่หนึ่งล้าน</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/201911251426223-Iron ชู้รัก พิษลึก.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/3-iron/3-iron-th-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">3-Iron ชู้รัก พิษลึก</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200331132011Small Apartments คนบ๊องส์ ห้องเช่าป่วน.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/small-apartments/small-apartments-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Small Apartments คนบ๊องส์ ห้องเช่าป่วน</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191125132446Sleazy Dizzy  คนปล้นโจร.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/sleazy-dizzy/sleazy-dizzy-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Sleazy Dizzy  คนปล้นโจร</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191125131315Drop คนดิบ.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/drop/drop-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Drop คนดิบ</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200331130427Savage  คนข้นแค้น.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/savage/savage-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Savage  คนข้นแค้น</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200330221729The Master ฟัดทะลุโลก.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the-master/the-master-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Master ฟัดทะลุโลก</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20220506210408zrAqJicb9Zyz0uLmTZZWhXFGUSd.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Defender_1994/The_Defender_1994_th_720p.mp4/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Defender (The Bodyguard from Beijing) บอดี้การ์ด ขอบอกว่าเธอเจ็บไม่ได้ (1994)</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191122111510High Risk ตายยาก เพราะเธอเจ็บไม่ได้.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/high-risk/high-risk-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">High Risk ตายยาก เพราะเธอเจ็บไม่ได้</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200330120418All Things to All Men ปล้นผ่ากลลวง.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/all-things-to-all-men/all-things-to-all-men-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">All Things to All Men ปล้นผ่ากลลวง</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200330114545Middle Men - มิดเดิล เมน คนร้อนออนไลน์.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/middle-men/middle-men-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Middle Men - มิดเดิล เมน คนร้อนออนไลน์</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191122103206Mr.Nice Guy ใหญ่ทับใหญ่.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/mr-nice-guy/mr-nice-guy-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Mr.Nice Guy ใหญ่ทับใหญ่</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191121200039Thunderbolt เร็วฟ้าผ่า.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Thunderbolt_1995/Thunderbolt_1995_th_1080.mp4/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Thunderbolt เร็วฟ้าผ่า (1995)</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191121195750Shinjuku Incident ใหญ่แค้นเดือด.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/shinjuku-incident/shinjuku-incident-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Shinjuku Incident ใหญ่แค้นเดือด</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200109135757The Protector ต้มยำกุ้ง.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the-protector/the-protector-th-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Protector ต้มยำกุ้ง</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191121125601The Silent War 701 รหัสลับคนคม.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the_silent_war/the_silent_war-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Silent War 701 รหัสลับคนคม</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20191121123423Running Out of Time แหกกฏโหด มหาประลัย 1-2.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/running-out-of-time-1/running-out-of-time-1-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Running Out of Time แหกกฏโหด มหาประลัย 1-2</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200328155843Dead Drop ดิ่งเวหาล่าทวงแค้น.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/dead-drop/dead-drop-th-en-720p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Dead Drop ดิ่งเวหาล่าทวงแค้น</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200328154757The Detective สืบล่าปมฆ่าสยองโลก.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/the-detective-1/the-detective-1-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">The Detective สืบล่าปมฆ่าสยองโลก 1-2</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200327224801Lock Stock and Two Smoking Barrels สี่เลือดบ้า มือใหม่หัดปล้น.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/lock-stock-and-two-smoking-barrels/lock-stock-and-two-smoking-barrels-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Lock Stock and Two Smoking Barrels สี่เลือดบ้า มือใหม่หัดปล้น</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200327223152To Live And Die In L.A ปราบตาย.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/to-live-and-die-in-la/to-live-and-die-in-la-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">To Live And Die In L.A ปราบตาย</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200327220317Billy Bathgate มาเฟียสกุลโหด.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/billy-bathgate/billy-bathgate-th-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Billy Bathgate มาเฟียสกุลโหด</p></center>
+            </div>
+            
+            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
+                <div class="movie-box">
+                    <div class="movie-image">
+                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20200327150902Born To Raise Hell โคตรจารชนฝังแค้นข้ามแผ่นดิน.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/born-to-raise-hell/born-to-raise-hel-th-en-1080p-fwtv.m4v/playlist.m3u8?'" autofocus="">
+                        </button>
+                    </div>
+                </div>
+                <center><p style="color:white">Born To Raise Hell โคตรจารชนฝังแค้นข้ามแผ่นดิน</p></center>
+            </div>
+                                
+
+
+ 
+
+<div class="col-lg-12 col-md-12 col-xs-12">
+	<div class="example" align="center">
+		<nav>
+			<ul class="pagination">
+				<li><a href="go:main-fw" aria-label="กลับหน้าแรก"><span aria-hidden="true"><< หน้าแรก</span></a></li>		
+										<li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime31.html">31</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime32.html'>32</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime33.html'>33</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime34.html'>34</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime35.html'>35</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime36.html'><b>36</b></a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime37.html'>37</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime38.html'>38</a></li>
+										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime39.html'>39</a></li>
+										<li class="active"><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime40.html'><b>40</b></a></li>
+				<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime41.html'>  หน้าถัดไป» </a></li>
+				<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime50.html'>  หน้าสุดท้าย» </a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+
+
+</div>
+</div>
+</div>  
+</div> 
+</div>
+</div>
+</div>
