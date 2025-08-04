@@ -2,6 +2,874 @@
 <html dir="ltr" lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>fw4free-app24-comedy 5 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+ <style>
+    html, body { margin:0; padding:0; width:100vw; height:100%; background:#000; box-sizing:border-box; overflow-x:hidden; font-family:'Roboto Condensed',sans-serif; }
+    *, *:before,*:after { box-sizing:inherit; }
+    .filter-bar { margin:10px 0; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .filter-bar input, .filter-bar select { padding:8px; font-size:16px; border-radius:4px; border:1px solid #444; background:#1f2025; color:#fff; }
+    .movies-grid { display:flex; flex-wrap:wrap; gap:10px; margin:0 -5px; padding-top:10px; }
+    .movie-item { flex:0 0 10%; box-sizing:border-box; padding:0 5px; margin-bottom:20px; max-width:200px; }
+    .movie-box { background:#1f2025; border-radius:4px; overflow:hidden; position:relative; }
+    .movie-image button { width:100%; height:0; padding-top:147%; background-size:cover; background-position:center; border:none; border-radius:2px; cursor:pointer; }
+    .movie-title { color:white; font-size:14px; text-align:center; margin-top:6px; line-height:1.2; padding:0 4px; word-break:break-word; }
+    @media (max-width:1200px){ .movie-item { flex:0 0 33.333%; } }
+    @media (max-width:900px){ .movie-item { flex:0 0 50%; } }
+    @media (max-width:600px){ .movie-item { flex:0 0 100%; } }
+    .pagination-wrapper { text-align:center; margin-top:20px; }
+    .pagination > li > a, .pagination > li > span { padding:6px 12px; }
+
+    /* pagination hover/focus */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused { background-color: yellow; color:#000; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      function normalizeText(t){ return (t||'').trim().toLowerCase(); }
+
+      function applyFilter(){
+        const query = normalizeText($("#movie-search").val());
+        const category = normalizeText($("#category-filter").val());
+        $(".movie-item").each(function(){
+          const title= normalizeText($(this).find(".movie-title").text());
+          const itemCat= normalizeText($(this).attr("data-category")||"all");
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if(matchesSearch && matchesCategory) $(this).show(); else $(this).hide();
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+      applyFilter();
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el=>{
+        el.addEventListener('focus', ()=> el.classList.add('focused'));
+        el.addEventListener('blur', ()=> el.classList.remove('focused'));
+      });
+    });
+  </script>
+</head>
+<body>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+        <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">action</option>
+        <option value="adventure">adventure</option>
+        <option value="crimes">crimes</option>
+        <option value="comedy">comedy</option>
+        <option value="drama">drama</option>
+        <option value="movies-asia">movies-asia</option>
+     <option value="movies-cartoon">movies-cartoon</option>
+        <option value="movies-horror">movies-horror</option>
+        <option value="movies-inter">movies-inter</option>
+        <option value="mystery">mystery</option>
+        <option value="romance">romance</option>
+        <option value="sci-fi">sci-fi</option>
+        <option value="superhero">superhero</option>
+        <option value="thai-movies">thai-movies</option>
+        <option value="thriller">thriller</option>
+        <option value="thai-series">thai-series</option>
+        <option value="thriller">thriller</option>
+        <option value="movies-war">movies-war</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240907230405ii1DVzyj9uJOF9qBrnHCT6nAxUw.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/He_Went_That_Way_2024/He_Went_That_Way_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240907224412y7OWuD7CYnfuLJbk19M0qCbY9V6.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Leo_2023/Leo_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240907223157eKpzbERuhogYTwI3PwfVsAHXnuO.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Badla_2019/Badla_2019_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240906223613xEt2GSz9z5rSVpIHMiGdtf0czyf.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Rebel_Ridge_2024/Rebel_Ridge_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240804123525mWV2fNBkSTW67dIotVTXDYZhNBj.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Trap_2024/Trap_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202406111741245oBVUUXDjURVTQ6x3aqiXG4GtHV.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Detective_Conan_vs_Kid_the_Phantom_Thief_2024/Detective_Conan_vs_Kid_the_Phantom_Thief_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240901125241cD8r2nCbekycnfPoRvaBnqpAap9.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Sheriff_Narko_Integriti_2024/Sheriff_Narko_Integriti_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202409011249286w7vApBT34Kb6B7ITxs45l9gswx.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Rebel_2024/Rebel_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240830174856iEe9RODlNgobupiksZ2vE4TZwUg.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Untamed_Royals_2024/Untamed_Royals_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240830174552arUOPPUgCmh8RTYTtPglAuAmbmr.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Abang_Long_Fadil_2_2017/Abang_Long_Fadil_2_2017_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240830173921mY7qO2wzSLPqyFAliZXm4Eg4Mqb.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Abang_Long_Fadil_2014/Abang_Long_Fadil_2014_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202408291353417PFc431SEiHbsMjrkF1VAfFlPn3.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Longlegs_2024/Longlegs_2024_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240829073322zUXK4yzxRhIka2xUegjcK9xA33u.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Love_You_to_Debt_2024/Love_You_to_Debt_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240825133324bSEK6tuaKRhXUdMKcU2Ms4icWln.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Like_Minds_2006/Like_Minds_2006_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240824044827yV7YWPKH2OWboyAlkZ46gp75Y4j.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Tokunbo_2024/Tokunbo_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240822123551tyiclx8VegzLUpiLFXSIh1lt710.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Nice_Girls_2024/Nice_Girls_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202408202233447CRwdPyw3vYwMApBr87vXcjwr67.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Heart_Blackened_2017/Heart_Blackened_2017_th_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200514204819Hard to Kill ฟอกแค้นจากนรก (1990);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Hard_to_Kill_1990/Hard_to_Kill_1990_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240816024838p5dA5ILsCseOxAE9N4HZIzECwKa.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Harom_Hara_2024/Harom_Hara_2024_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240815054333aBJPln6tregxSRq2UUoVIYWkkZW.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Secrets_of_a_Gold_Digger_Killer_2021/Secrets_of_a_Gold_Digger_Killer_2021_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240813133314hPZE10GAgdLFr2LmyWaSCoeYTfs.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Salaar_Part_1_Ceasefire_2023/Salaar_Part_1_Ceasefire_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240810015535vQ5PpIGF3d3LFN7SkWQmx6m4QVf.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_Instigators_2024/The_Instigators_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240810015016fPIncxPfuPss284tEB1e7piP09D.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Phir_Aayi_Hasseen_Dillruba_2024/Phir_Aayi_Hasseen_Dillruba_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240810013023aE9WqOApdRYsowsGE0118dyA4c9.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Mission_Cross_2024/Mission_Cross_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202408062212377NkaZKZGqpzLXMt3fL7U2JnIqwE.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Maharaja_2024/Maharaja_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240806220928hgip2gbwu19ITJw1KvzLjKHIInt.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Bhola_Shankar_2023/Bhola_Shankar_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202408062202023Bv6cN7LD0MOTDRWSOo0IGH7wco.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Animal_2023/Animal_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202408062031095wM0RhrMFAPhBI7GBkBEtb6vYYN.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_Glass_House_2001/The_Glass_House_2001_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240806202453Uz32ERsyCmGwV8Eg2wmT2ooWpo.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Deliver_Us_from_Evil_2014/Deliver_Us_from_Evil_2014_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240803133157104914_E78oFkkkeqwTl9CXLi6npMa.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_White_Storm_3_Heaven_or_Hell_2023/The_White_Storm_3_Heaven_or_Hell_2023_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240802161342a8paCRuq4xHiD85Y9U4QlPNaazL.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Legacy_of_Rage_1986/Legacy_of_Rage_1986_st_1080_AI.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202210230141028XF5EIDUOZv1p9orukdyERvv2Qn.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Accident_Man_Hitman_s_Holiday_2022/Accident_Man_Hitman_s_Holiday_2022_th_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240801221919zhQmHtlBjOjf8XhAxZA8eueUcBz.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Borderless_Fog_2024/Borderless_Fog_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2024073001500952tSovUH1w9cp4gzGNThaT4pQW.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Kill_2023/Kill_2023_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240723185517ciz12N2kHrREYAjIbB7R8eKwoMq.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Johnny_And_Clyde_2023/Johnny_And_Clyde_2023_st_1080_HDTV.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240722212036dPkyQPu89rRMjOtruo2A1GVDfMb.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/ExPatriot_2017/ExPatriot_2017_st_1080_HDTV.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240722211353i7aiOk4NB0N88trcLURlHeUDqPo.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Shanghai_2010/Shanghai_2010_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240713201142bb7f2aa0-3dd0-11ef-9b49-2b7e8cbea034_webp_original.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/My_Home_Hero_the_Movie_2024/My_Home_Hero_the_Movie_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240713195835ePWKQzOnwabMcJsWYWIiy5p1Ofr.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/BlackBerry_2023/BlackBerry_2023_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240712105402MV5BODJhYmU2OWUtZWI3Yy00MTQ2LThmNTItNWY5OTc2ZTA3MjkyXkEyXkFqcGdeQXVyMDU2NjAwNg@@._V1_FMjpg_UX1000_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Leha_2024/Leha_2024_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240712072507tarnf7IBj4CYb4omormKcwOtrtV.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_House_That_Jack_Built_2018/The_House_That_Jack_Built_2018_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240709152707kv4n3xgRWtkldaD4kyy1FvpW6bO.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_Retirement_Plan_2023/The_Retirement_Plan_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240708162827fHQHC32dhom8u0OxC2hs2gYQh0M.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Blowback_2022/Blowback_2022_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202407081601365MaF1WIt8s9aEGQpYfaKhEOgVjK.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/The_51st_State_2001/The_51st_State_2001_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20220728032443fFeViNHhxXttSYZJH68mQuw3gj3.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Duke_2020/The_Duke_2020_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240707123914t9xJGY5RV9rrL34WFEcdRlH37GT.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Maximum_Risk_1996/Maximum_Risk_1996_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240706095525vtuKbkVIlnPTskt4mUZj6QiZYKc.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Duan_Nago_Bogho_2023/Duan_Nago_Bogho_2023_st_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240705020524kYmoJSypfpB9OnwvxebiV1nZUXi.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Target_2023/Target_2023_st_1080_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240705015807mYTVSnUdJrRGDji1VYwcoUsWuil.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Pattaya_Heat_2024/Pattaya_Heat_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202407040153545OehGNBJUJeYrwMwtb2p0aXtpju.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie4/Beverly_Hills_Cop_Axel_F_2024/Beverly_Hills_Cop_Axel_F_2024_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Title</div>
+</div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination-wrapper">
+            <nav>
+              <ul class="pagination">
+                <li><a href="go:main-fw" aria-label="กลับหน้าหลัก"><span aria-hidden="true"><< กลับหน้าหลัก</span></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime1.html">1</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime2.html">2</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime3.html">3</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime4.html">4</a></li>
+      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime5.html"><b>5</b></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime6.html">6</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime7.html">7</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime8.html">8</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime9.html">9</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime10.html">10</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime11.html">หน้าต่อไป»</a></li>
+      <li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime50.html'>  หน้าสุดท้าย» </a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
   <title>fw4free-app24-crimes-5  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
