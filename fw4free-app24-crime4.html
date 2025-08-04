@@ -110,6 +110,26 @@
 
     .pagination-wrapper { text-align: center; margin-top: 20px; }
     .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+
+    /* เพิ่ม: hover / focus เปลี่ยนพื้นหลังเลขหน้าเป็นเหลือง */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused {
+      background-color: yellow;
+      color: #000;
+    }
   </style>
 
   <script>
@@ -142,39 +162,42 @@
 
       $("#movie-search").on("input", applyFilter);
       $("#category-filter").on("change", applyFilter);
+
+      // เสริม: เพิ่มคลาส focused เมื่อโฟกัส (ช่วยรีโมท/คีย์บอร์ด)
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el => {
+        el.addEventListener('focus', () => el.classList.add('focused'));
+        el.addEventListener('blur', () => el.classList.remove('focused'));
+      });
     });
   </script>
 </head>
 
 <body>
-                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
 
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
 
-          <!-- filter bar -->
-          <div class="filter-bar">
-            <div>
-              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
-            </div>
-            <div>
-              <select id="category-filter">
-                <option value="all">ทั้งหมด</option>
-                <option value="action">Action</option>
-                <option value="drama">Drama</option>
-                <option value="sci-fi">Sci-Fi</option>
-                <option value="crimes">Crimes</option>
-              </select>
-            </div>
-          </div>
+  <!-- filter bar -->
+  <div class="filter-bar">
+    <div>
+      <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+    </div>
+    <div>
+      <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">Action</option>
+        <option value="drama">Drama</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="crimes">Crimes</option>
+      </select>
+    </div>
+  </div>
+
 
           <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
           <div class="movies-grid">
@@ -189,7 +212,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Conquer: Lahad Datu ปฏิบัติการลาฮัดดาตู (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -203,7 +226,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 Absolution คนสันดานเดือด (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -217,7 +240,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Killer (2022) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -231,7 +254,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Twilight of the Warriors: Walled In เมืองพญายม ปิดบัญชียมบาล (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -245,7 +268,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">GTMAX (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -259,7 +282,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Skin (2019) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -273,7 +296,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Citizen of a Kind (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -287,7 +310,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Dragon in Jail จำไว้เมียข้าเจ็บไม่ได้ (1990)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -301,7 +324,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">10 Days of a Curious Man 10 วันของคนอยากรู้อยากเห็น (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -315,7 +338,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Revenge: A Love Story (2010) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -329,7 +352,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Sleeping Dogs อย่าแหย่หมาหลับ (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -343,7 +366,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">A Place Called Silence (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -357,7 +380,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Freedom (Libre) จอมโจรใจเสรี (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -371,7 +394,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">V.1 Vina: Before 7 Days วีนา คืนบาป สาปจากหลุม (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -385,7 +408,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Silent Hour เงียบระห่ำ ลั่นนรก (2024) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -399,7 +422,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Montage (Mong-ta-joo) สืบล่าฆ่าซ้อนแผน (2013)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -413,7 +436,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Scooby-Doo! and Krypto, Too! สกูบี้-ดู! ร่วมช่วยด้วยคริปโต (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -427,7 +450,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Do Patti (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -441,7 +464,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Shadow Strays นักฆ่าเงาล่าทรชน (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -455,7 +478,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Justice (Napad) ล่าความยุติธรรม (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -469,7 +492,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Violent Night คืนเดือด (2022)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -483,7 +506,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">13 Cameras (2015) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -497,7 +520,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">In Her Place ชีวิตบนเส้นขนาน (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -511,7 +534,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Breaking the Silence: The Maria Soledad Case มาเรีย โซเลดัด: ทำลายความเงียบ (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -525,7 +548,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Rush Hour 2 คู่ใหญ่ ฟัดเต็มสปีด 2 (2001)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -539,7 +562,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Black Storm พายุทมิฬ (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -553,7 +576,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Trouble ผิดที่ ผิดทาง (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -567,7 +590,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Bungo Stray Dogs the Movie: BEAST (2022) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -581,7 +604,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Detective Dee: Scent of a Killer ตี๋เหรินเจี๋ยกับเครื่องหอมมรณะ (2022)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -595,7 +618,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Chrysalis คนระห่ำเปลี่ยนสมองลุย (2007)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -609,7 +632,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Wolfs สองคมคู่แสบมหากาฬ (2024) Apple TV+ บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -623,7 +646,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Circle of Atonement (2015) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -637,7 +660,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">An Invisible Victim: The Eliza Samudio Case เหยื่อที่มองไม่เห็น: คดีอีลิซ่า ซามูดิโอ (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -651,7 +674,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Killer Heat เด็ดปีกฆ่า (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -665,7 +688,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Naked Killer เพชฌฆาตกระสุนเปลือย (1992)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -679,7 +702,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">ฝ่านรกเมืองเทวดา Bangkok Breaking: Heaven and Hell (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -693,7 +716,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Abnormal: Buas (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -707,7 +730,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">No More Bets (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -721,7 +744,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Abang Adik ล่าฝันเมืองเดือด (2023)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -735,7 +758,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Hijack 1971 นรกเหนือน่านฟ้า (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -749,7 +772,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Wrong Daughter (2018) HDTV บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -763,7 +786,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Jai Bhim ฝ่าอยุติธรรม (2021) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -777,7 +800,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Nikki &amp; Nora: Sister Sleuths นิกกี้กับนอร่า สองพี่น้องนักสืบ (2022) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -791,7 +814,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Mr. Socrates เก๋าโจ๋พันธุ์ซ่าท้าดวลเจ้าพ่อ (2005)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -805,7 +828,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Sheroes (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -819,7 +842,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Greedy People (2024) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -833,7 +856,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Officer Black Belt เจ้าหน้าที่สายดำ (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -847,7 +870,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">เพื่อน...กูรักมึงว่ะ Bangkok Love Story (2007)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -861,7 +884,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Formed Police Unit FPU หน่วยพยัคฆ์พิทักษ์ข้ามโลก (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
@@ -875,7 +898,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Dead Man (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
           </div>
@@ -885,10 +908,10 @@
             <nav>
               <ul class="pagination">
                 <li><a href="go:main-fw" aria-label="กลับหน้าหลัก"><span aria-hidden="true"><< กลับหน้าหลัก</span></a></li>
-      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime1.html">1</a></li>
+      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime1.html"><b>1</b></a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime2.html">2</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime3.html">3</a></li>
-      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime4.html"><b>4</b></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime4.html">4</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime5.html">5</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime6.html">6</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime7.html">7</a></li>

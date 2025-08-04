@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>fw4free-app24-crimes-  </title>
+  <title>fw4free-app24-crimes-6  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- External CSS -->
@@ -110,6 +110,26 @@
 
     .pagination-wrapper { text-align: center; margin-top: 20px; }
     .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+
+    /* เพิ่ม: hover / focus เปลี่ยนพื้นหลังเลขหน้าเป็นเหลือง */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused {
+      background-color: yellow;
+      color: #000;
+    }
   </style>
 
   <script>
@@ -142,39 +162,42 @@
 
       $("#movie-search").on("input", applyFilter);
       $("#category-filter").on("change", applyFilter);
+
+      // เสริม: เพิ่มคลาส focused เมื่อโฟกัส (ช่วยรีโมท/คีย์บอร์ด)
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el => {
+        el.addEventListener('focus', () => el.classList.add('focused'));
+        el.addEventListener('blur', () => el.classList.remove('focused'));
+      });
     });
   </script>
 </head>
 
 <body>
-                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
 
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
 
-          <!-- filter bar -->
-          <div class="filter-bar">
-            <div>
-              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
-            </div>
-            <div>
-              <select id="category-filter">
-                <option value="all">ทั้งหมด</option>
-                <option value="action">Action</option>
-                <option value="drama">Drama</option>
-                <option value="sci-fi">Sci-Fi</option>
-                <option value="crimes">Crimes</option>
-              </select>
-            </div>
-          </div>
+  <!-- filter bar -->
+  <div class="filter-bar">
+    <div>
+      <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+    </div>
+    <div>
+      <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">Action</option>
+        <option value="drama">Drama</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="crimes">Crimes</option>
+      </select>
+    </div>
+  </div>
+
 
           <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
           <div class="movies-grid">
@@ -189,11 +212,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Art of War ทำเนียบพันธุ์ฆ่า สงครามจับตาย (2000)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -203,11 +226,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Who Is Luigi Mangione? (2025) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -217,11 +240,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 Den of Thieves 2: Pantera โคตรนรกปล้นเหนือเมฆ: แพนเธอรา (2025)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -231,11 +254,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Phantom Detective นับสืบแวนนิชชิ่ง (2016) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -245,11 +268,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Sorgavaasal ประตูสวรรค์ (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -259,11 +282,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 Flight Risk นรกยึดไฟลต์ (2025)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -273,11 +296,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Broken Rage (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -287,11 +310,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Special Delivery ส่งด่วน ทะลุนรก (2022) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -301,11 +324,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Revival (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -315,11 +338,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Rich and Famous (Gong woo ching) ต้นตระกูลโหด (1987)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -329,11 +352,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Tragic Hero (Rich and Famous2 / Ying hung ho hon) บริษัทโหด (1987)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -343,11 +366,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Order จับตายขบวนการเดนคน (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -357,11 +380,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">สุขสันต์..วันเกิดครับพ่อ Happy Birthday Father (2019)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -371,11 +394,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Heart&#x27;s Motive (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -385,11 +408,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Substitute นักเรียนที่นี่...ต้องมีคนปราบ (1996)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -399,11 +422,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Bogota: City of the Lost โบโกตา: เมืองคนหลง (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -413,11 +436,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Spun คนห่าม บ้าเกินพิกัด (2002)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -427,11 +450,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Faceless (Shoutai) ไร้หน้า (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -441,11 +464,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Italian Job เดอะ อิตาเลี่ยน จ๊อบ (1969)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -455,11 +478,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 Babygirl เบบี้เกิร์ล (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -469,11 +492,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Made in Hong Kong (1997)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -483,11 +506,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Museum (2016) บรรยายไทยแปล</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -497,11 +520,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Nerkonda Paarvai ปิดคดีลวง (2019)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -511,11 +534,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Dirty Money เกมเหลี่ยมชิงเงินบาป (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -525,11 +548,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Calendar Killer คาเลนดาร์คิลเลอร์ วันสั่งตาย (2025)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -539,11 +562,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Accused ฉันไม่ยอม (1988) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -553,11 +576,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Ad Vitam ปฏิบัติการเพื่อชีวิต (2025) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -567,11 +590,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Still of the Night สติล ออฟ เดอะ ไนท์ (1982) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -581,11 +604,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Phantom (Yuryeong) หักเหลี่ยมสายลับมายา (2023) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -595,11 +618,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">One-Line วันไลน์ บริการกู้ไม่จำกัด (2017) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -609,11 +632,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Cleaner สืบชำระศพ (2007)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -623,11 +646,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">No Mercy ไร้เมตตา (2019) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -637,11 +660,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">New World (Sinsegye) ปฏิวัติโค่นมาเฟีย (2013) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -651,11 +674,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Boy Kills World แค้นนี้ที่รอคิวล์ (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -665,11 +688,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 The Roundup: Punishment บู๊ระห่ำล่าล้างนรก: นรกลงทัณฑ์ (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -679,11 +702,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Get Rich or Die Tryin&#x27; สู้ยิบตาเพื่อฝั่งฝัน (2005)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -693,11 +716,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Silverado ซิลเวอราโด (1985)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -707,11 +730,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Moscow Mission (Mo Si Ke xing dong) ภารกิจท้านรก (2023)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -721,11 +744,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Ferry 2 แฟร์รี่: เจ้าพ่อผงาด 2 (2024) NETFLIX บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -735,11 +758,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Carry-On สัมภาระอันตราย (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -749,11 +772,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Joker: Folie à Deux โจ๊กเกอร์ โฟลีย์ อา เดอ (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -763,11 +786,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Z.1 I, the Executioner (Veteran 2) คู่เดือดนรกต้องกราบ (2024)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -777,11 +800,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Veteran ขอโทษที! ปืนพี่มันลั่น (2015)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -791,11 +814,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Biggest Heist Ever ปล้นมโหฬาร (2024) NETFLIX</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -805,11 +828,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">The Experts มือฉมังหักทรชน (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -819,11 +842,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Sikandar Ka Muqaddar ชะตาข้าลิขิต (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -833,11 +856,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Black Money (2019) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -847,11 +870,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Look Out, Officer! คนเล็กทะลุโลก (1990)</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -861,11 +884,11 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Broker จัดหารัก (2022) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
 
-<div class="movie-item" data-category="uncategorized">
+<div class="movie-item" data-category="Crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -875,7 +898,7 @@
       </button>
     </div>
   </div>
-  <div class="movie-title">Crescent City (2024) บรรยายไทย</div>
+  <div class="movie-title">No Title</div>
 </div>
 
           </div>
@@ -885,9 +908,9 @@
             <nav>
               <ul class="pagination">
                 <li><a href="go:main-fw" aria-label="กลับหน้าหลัก"><span aria-hidden="true"><< กลับหน้าหลัก</span></a></li>
-      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime1.html">1</a></li>
+      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime1.html"><b>1</b></a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime2.html">2</a></li>
-      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime3.html"><b>3</b></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime3.html">3</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime4.html">4</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime5.html">5</a></li>
       <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime6.html">6</a></li>

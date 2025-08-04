@@ -110,6 +110,26 @@
 
     .pagination-wrapper { text-align: center; margin-top: 20px; }
     .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+
+    /* เพิ่ม: hover / focus เปลี่ยนพื้นหลังเลขหน้าเป็นเหลือง */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused {
+      background-color: yellow;
+      color: #000;
+    }
   </style>
 
   <script>
@@ -142,39 +162,42 @@
 
       $("#movie-search").on("input", applyFilter);
       $("#category-filter").on("change", applyFilter);
+
+      // เสริม: เพิ่มคลาส focused เมื่อโฟกัส (ช่วยรีโมท/คีย์บอร์ด)
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el => {
+        el.addEventListener('focus', () => el.classList.add('focused'));
+        el.addEventListener('blur', () => el.classList.remove('focused'));
+      });
     });
   </script>
 </head>
 
 <body>
-                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
 
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
-                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
 
-          <!-- filter bar -->
-          <div class="filter-bar">
-            <div>
-              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
-            </div>
-            <div>
-              <select id="category-filter">
-                <option value="all">ทั้งหมด</option>
-                <option value="action">Action</option>
-                <option value="drama">Drama</option>
-                <option value="sci-fi">Sci-Fi</option>
-                <option value="crimes">Crimes</option>
-              </select>
-            </div>
-          </div>
+  <!-- filter bar -->
+  <div class="filter-bar">
+    <div>
+      <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+    </div>
+    <div>
+      <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">Action</option>
+        <option value="drama">Drama</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="crimes">Crimes</option>
+      </select>
+    </div>
+  </div>
+
 
           <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
           <div class="movies-grid">
