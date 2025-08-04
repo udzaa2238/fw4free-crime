@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>fw4free-app24-crimes-2  </title>
+  <title>fw4free-app24-comedy  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- External CSS -->
@@ -27,94 +27,26 @@
   <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
   <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100%;
-      background: #000;
-      box-sizing: border-box;
-      overflow-x: hidden;
-      font-family: 'Roboto Condensed', sans-serif;
-    }
-    *, *:before, *:after { box-sizing: inherit; }
+ <style>
+    html, body { margin:0; padding:0; width:100vw; height:100%; background:#000; box-sizing:border-box; overflow-x:hidden; font-family:'Roboto Condensed',sans-serif; }
+    *, *:before,*:after { box-sizing:inherit; }
+    .filter-bar { margin:10px 0; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .filter-bar input, .filter-bar select { padding:8px; font-size:16px; border-radius:4px; border:1px solid #444; background:#1f2025; color:#fff; }
+    .movies-grid { display:flex; flex-wrap:wrap; gap:10px; margin:0 -5px; padding-top:10px; }
+    .movie-item { flex:0 0 10%; box-sizing:border-box; padding:0 5px; margin-bottom:20px; max-width:200px; }
+    .movie-box { background:#1f2025; border-radius:4px; overflow:hidden; position:relative; }
+    .movie-image button { width:100%; height:0; padding-top:147%; background-size:cover; background-position:center; border:none; border-radius:2px; cursor:pointer; }
+    .movie-title { color:white; font-size:14px; text-align:center; margin-top:6px; line-height:1.2; padding:0 4px; word-break:break-word; }
+    @media (max-width:1200px){ .movie-item { flex:0 0 33.333%; } }
+    @media (max-width:900px){ .movie-item { flex:0 0 50%; } }
+    @media (max-width:600px){ .movie-item { flex:0 0 100%; } }
+    .pagination-wrapper { text-align:center; margin-top:20px; }
+    .pagination > li > a, .pagination > li > span { padding:6px 12px; }
 
-    /* Search/filter bar */
-    .filter-bar {
-      margin: 10px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .filter-bar input, .filter-bar select {
-      padding: 8px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #444;
-      background: #1f2025;
-      color: #fff;
-    }
-
-    /* Movie grid 5 columns */
-    .movies-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 0 -5px;
-      padding-top: 10px;
-    }
-    .movie-item {
-      flex: 0 0 10%;
-      box-sizing: border-box;
-      padding: 0 5px;
-      margin-bottom: 20px;
-      max-width: 200px;
-    }
-    .movie-box {
-      background: #1f2025;
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .movie-image button {
-      width: 100%;
-      height: 0;
-      padding-top: 147%;
-      background-size: cover;
-      background-position: center;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-    }
-    .movie-title {
-      color: white;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 6px;
-      line-height: 1.2;
-      padding: 0 4px;
-      word-break: break-word;
-    }
-
-    @media (max-width: 1200px) {
-      .movie-item { flex: 0 0 33.333%; }
-    }
-    @media (max-width: 900px) {
-      .movie-item { flex: 0 0 50%; }
-    }
-    @media (max-width: 600px) {
-      .movie-item { flex: 0 0 100%; }
-    }
-
-    .pagination-wrapper { text-align: center; margin-top: 20px; }
-    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
-
-    /* เพิ่ม: hover / focus เปลี่ยนพื้นหลังเลขหน้าเป็นเหลือง */
+    /* pagination hover/focus */
     .pagination > li > a,
     .pagination > li > span {
-      transition: background-color 0.15s ease, color 0.15s ease;
+      transition: background-color .15s ease, color .15s ease;
     }
     .pagination > li > a:hover,
     .pagination > li > a:focus,
@@ -126,10 +58,7 @@
       color: #000 !important;
       outline: none;
     }
-    .pagination > li > a.focused {
-      background-color: yellow;
-      color: #000;
-    }
+    .pagination > li > a.focused { background-color: yellow; color:#000; }
   </style>
 
   <script>
@@ -139,70 +68,78 @@
       $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
       $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
 
-      // Filter logic
-      function normalizeText(t) {
-        return t.trim().toLowerCase();
-      }
+      function normalizeText(t){ return (t||'').trim().toLowerCase(); }
 
-      function applyFilter() {
-        const query = normalizeText($("#movie-search").val() || "");
-        const category = $("#category-filter").val();
-        $(".movie-item").each(function() {
-          const title = normalizeText($(this).find(".movie-title").text() || "");
-          const itemCat = $(this).attr("data-category") || "all";
+      function applyFilter(){
+        const query = normalizeText($("#movie-search").val());
+        const category = normalizeText($("#category-filter").val());
+        $(".movie-item").each(function(){
+          const title= normalizeText($(this).find(".movie-title").text());
+          const itemCat= normalizeText($(this).attr("data-category")||"all");
           const matchesSearch = query === "" || title.includes(query);
           const matchesCategory = category === "all" || itemCat === category;
-          if (matchesSearch && matchesCategory) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
+          if(matchesSearch && matchesCategory) $(this).show(); else $(this).hide();
         });
       }
 
       $("#movie-search").on("input", applyFilter);
       $("#category-filter").on("change", applyFilter);
-
-      // เสริม: เพิ่มคลาส focused เมื่อโฟกัส (ช่วยรีโมท/คีย์บอร์ด)
-      document.querySelectorAll('.pagination a, .pagination span').forEach(el => {
-        el.addEventListener('focus', () => el.classList.add('focused'));
-        el.addEventListener('blur', () => el.classList.remove('focused'));
+      applyFilter();
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el=>{
+        el.addEventListener('focus', ()=> el.classList.add('focused'));
+        el.addEventListener('blur', ()=> el.classList.remove('focused'));
       });
     });
   </script>
 </head>
-
 <body>
-  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
 
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
-  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <!-- filter bar -->
-  <div class="filter-bar">
-    <div>
-      <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
-    </div>
-    <div>
-      <select id="category-filter">
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+        <select id="category-filter">
         <option value="all">ทั้งหมด</option>
-        <option value="action">Action</option>
-        <option value="drama">Drama</option>
-        <option value="sci-fi">Sci-Fi</option>
-        <option value="crimes">Crimes</option>
-      </select>
-    </div>
-  </div>
-
+        <option value="action">action</option>
+        <option value="adventure">adventure</option>
+        <option value="crimes">crimes</option>
+        <option value="comedy">comedy</option>
+        <option value="drama">drama</option>
+        <option value="movies-asia">movies-asia</option>
+     <option value="movies-cartoon">movies-cartoon</option>
+        <option value="movies-horror">movies-horror</option>
+        <option value="movies-inter">movies-inter</option>
+        <option value="mystery">mystery</option>
+        <option value="romance">romance</option>
+        <option value="sci-fi">sci-fi</option>
+        <option value="superhero">superhero</option>
+        <option value="thai-movies">thai-movies</option>
+        <option value="thriller">thriller</option>
+        <option value="thai-series">thai-series</option>
+        <option value="thriller">thriller</option>
+        <option value="movies-war">movies-war</option>
+              </select>
+            </div>
+          </div>
 
           <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
           <div class="movies-grid">
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -216,7 +153,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -230,7 +167,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -244,7 +181,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -258,7 +195,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -272,7 +209,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -286,7 +223,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -300,7 +237,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -314,7 +251,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -328,7 +265,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -342,7 +279,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -356,7 +293,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -370,7 +307,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -384,7 +321,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -398,7 +335,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -412,7 +349,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -426,7 +363,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -440,7 +377,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -454,7 +391,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -468,7 +405,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -482,7 +419,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -496,7 +433,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -510,7 +447,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -524,7 +461,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -538,7 +475,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -552,7 +489,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -566,7 +503,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -580,7 +517,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -594,7 +531,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -608,7 +545,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -622,7 +559,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -636,7 +573,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -650,7 +587,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -664,7 +601,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -678,7 +615,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -692,7 +629,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -706,7 +643,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -720,7 +657,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -734,7 +671,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -748,7 +685,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -762,7 +699,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -776,7 +713,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -790,7 +727,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -804,7 +741,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -818,7 +755,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -832,7 +769,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -846,7 +783,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -860,7 +797,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -874,7 +811,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
@@ -888,7 +825,7 @@
 </div>
 
 
-<div class="movie-item" data-category="Crimes">
+<div class="movie-item" data-category="crimes">
   <div class="movie-box">
     <div class="movie-image">
       <button type="button"
