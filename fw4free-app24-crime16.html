@@ -1,811 +1,868 @@
 <!DOCTYPE html>
-<html dir='ltr' lang='en'>
+<html dir="ltr" lang="en">
 <head>
-<title> fw4free-app24-comedy16 </title>
-<meta charset='UTF-8' />
+  <meta charset="UTF-8" />
+  <title>fw4free-app24-comedy 16 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
 
-<link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
-<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
 
-	
-<!-- Styles of Puerto Responsive Flat Buttons -->
-<link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
-	
-<!-- Font awesome -->
-<link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
 
-<!-- start plugins -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://playtvthai.github.io/m3u8/js/jquery-1.11.1.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel='stylesheet' type='text/css'>
+ <style>
+    html, body { margin:0; padding:0; width:100vw; height:100%; background:#000; box-sizing:border-box; overflow-x:hidden; font-family:'Roboto Condensed',sans-serif; }
+    *, *:before,*:after { box-sizing:inherit; }
+    .filter-bar { margin:10px 0; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .filter-bar input, .filter-bar select { padding:8px; font-size:16px; border-radius:4px; border:1px solid #444; background:#1f2025; color:#fff; }
+    .movies-grid { display:flex; flex-wrap:wrap; gap:10px; margin:0 -5px; padding-top:10px; }
+    .movie-item { flex:0 0 10%; box-sizing:border-box; padding:0 5px; margin-bottom:20px; max-width:200px; }
+    .movie-box { background:#1f2025; border-radius:4px; overflow:hidden; position:relative; }
+    .movie-image button { width:100%; height:0; padding-top:147%; background-size:cover; background-position:center; border:none; border-radius:2px; cursor:pointer; }
+    .movie-title { color:white; font-size:14px; text-align:center; margin-top:6px; line-height:1.2; padding:0 4px; word-break:break-word; }
+    @media (max-width:1200px){ .movie-item { flex:0 0 33.333%; } }
+    @media (max-width:900px){ .movie-item { flex:0 0 50%; } }
+    @media (max-width:600px){ .movie-item { flex:0 0 100%; } }
+    .pagination-wrapper { text-align:center; margin-top:20px; }
+    .pagination > li > a, .pagination > li > span { padding:6px 12px; }
 
-<script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
-<script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
-<style type="text/css">
-
-.overlay {
-    z-index: 5;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
-    position:absolute;
-    text-align:left;
-	background-color:rgba(255,255,255,0);
-}
-
-.overlay-flag {
-    position:absolute;
-    z-index: 6;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    text-align:right;
-	background-color:rgba(255,255,255,0);
-
-}
-
-
-.overlay2 {
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
-    position:absolute;
-    text-align:left;
-	background-color:rgba(0,0,0,0.5);
-	height:60px;
-	padding-top:5px;
-	padding-bottom:5px;
-	padding-right:5px;
-	width:100%;
-	margin-left:0px;
-	margin-top:35px;
-}
-.login_botton {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 2px;
-    cursor: pointer;
-	border-radius: 4px;
-}
-
-.live_botton {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 2px;
-    cursor: pointer;
-	border-radius: 4px;
-}
-
-.login_txt {
-	border: #0A0A0A;
-	color: black;
-	text-align: center;
-	cursor: pointer;
-	border-radius: 4px;
-	width:150px;
-    margin-top: -6px;
-
-}
-
-input:focus {
-	outline: none !important;
-	border-color: #F7AA06;
-	box-shadow: 0 0 0 5px #F7AA06;
-	border-radius: 2px
-}
-
-button:focus {
-	outline: none !important;
-	border-color: #F7AA06;
-	box-shadow: 0 0 0 5px #F7AA06;
-	border-radius: 2px;
-}
-
-a:focus img{
-	outline: none !important;
-	box-shadow: 0 0 0 5px #F7AA06;
-	border-radius: 2px;
-
-}
-
-.box-flag {
-	border: 0px;
-	background-color: rgba(255,255,255,0.0);
-	display: inline-block;
-}
-
-
-
-</style>
-<link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
-<link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
-<link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
-
-</head>
-<body>
-
-
-  <style>
-  .modal-header {
-    background-color: #111;
-    color:white !important;
-    text-align: center;
-    font-size: 30px;
-  }
-  .modal-footer {
-    background-color: #f9f9f9;
-  }
-  
-.group {
-  margin-bottom: 30px;
-}
-.group label {
-  font-size: 24px;
-}
-.group2 label {
-  font-size: 20px;
-}
-  
-  input[type='text'] { font-size: 24px; }
-  
+    /* pagination hover/focus */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused { background-color: yellow; color:#000; }
   </style>
 
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
 
+      function normalizeText(t){ return (t||'').trim().toLowerCase(); }
 
+      function applyFilter(){
+        const query = normalizeText($("#movie-search").val());
+        const category = normalizeText($("#category-filter").val());
+        $(".movie-item").each(function(){
+          const title= normalizeText($(this).find(".movie-title").text());
+          const itemCat= normalizeText($(this).attr("data-category")||"all");
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if(matchesSearch && matchesCategory) $(this).show(); else $(this).hide();
+        });
+      }
 
-</div>
- 
-<script>
-$(document).ready(function(){
-  $("#myBtn").click(function(){
-    $("#myModal").modal();
-  });
-});
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+      applyFilter();
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el=>{
+        el.addEventListener('focus', ()=> el.classList.add('focused'));
+        el.addEventListener('blur', ()=> el.classList.remove('focused'));
+      });
+    });
+  </script>
+</head>
+<body>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
 
-$(document).ready(function(){
-  $("#myBtn2").click(function(){
-    $("#myModal2").modal();
-  });
-});
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-$(document).ready(function(){
-  $("#myBtn_vip").click(function(){
-    $("#myModal_vip").modal();
-  });
-});
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+        <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">action</option>
+        <option value="adventure">adventure</option>
+        <option value="crimes">crimes</option>
+        <option value="comedy">comedy</option>
+        <option value="drama">drama</option>
+        <option value="movies-asia">movies-asia</option>
+     <option value="movies-cartoon">movies-cartoon</option>
+        <option value="movies-horror">movies-horror</option>
+        <option value="movies-inter">movies-inter</option>
+        <option value="mystery">mystery</option>
+        <option value="romance">romance</option>
+        <option value="sci-fi">sci-fi</option>
+        <option value="superhero">superhero</option>
+        <option value="thai-movies">thai-movies</option>
+        <option value="thriller">thriller</option>
+        <option value="thai-series">thai-series</option>
+        <option value="thriller">thriller</option>
+        <option value="movies-war">movies-war</option>
+              </select>
+            </div>
+          </div>
 
-$(document).ready(function(){
-  $("#myBtn_cpass").click(function(){
-    $("#myModal_changepass").modal();
-  });
-});
-</script>
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
 
-<style type="text/css">
-.footer 
-{
-    text-align: center;
-    position : absolute;
-    bottom : -20;
-    width:99%;
-    height : 56px;
-    margin-top : 50px;
-  }
-</style>
-</header>
-	
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>       
-
-
-										
-  <div class="container" style="background-color:rgba(0,0,0,0.0); height:100%;">
-     <div class="container_wrap">
-     	<div class="row" style="background-color:#27282c;border-radius:5px">
-        	<div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
-            	<div class="row" >
-			<div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
-				<div class="logo">
-				</div>
-			</div>
-
-
-		<div class="col-lg-10 col-md-12 col-xs-12">
-		<div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding-top:0px;padding-bottom:5px;padding-left:5px;padding-right:5px">
-            <form class="form-inline">
-                <div class="form-group" style="margin:5px;">
-
-                
-					<form action="" method="get" name="lange">
-						<input name="lange" type="hidden" id="lange" value="en">
-						<input type="image" src="/web/images/en.gif" name="submit" width="30" height="2%" alt="submit"/>
-					</form>	
-
-
-	<!--div class="form-group"-->
-	<label for="form-password"><font color='white'>ชื่อ :  </font><font color='yellow'>[ ผู้เฒ่าพเนจร ™ ]</font></label>
-	<!--/div-->
-
-										
-    <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:digital'"></i> 🏠 Home ™ </button>
-                   
-	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:live'"></i> 📡 ถ่ายทอดสด ™</button>
-	
-	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-serie'"></i> 🎞️ ดูซีรี่ย์ ™ </button>
-					
-	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-movie'"></i>🎥 ดูหนัง ™  </button>					
-					
-	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='go:main-movie'"></i>📽️ ดูสารคดี ™ </button>					
-					
-	<button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0px;font-size:18px;color:#FFF;padding-left:5px;padding-right:5px;font-family: 'rsuregular';" onclick="window.location.href='http://action_exit'"></i>🚪 ออก</button>					
-
-
-
-----------------------------------------------------------------------------------------------------------
-
-
-        <div class="col-lg-9 col-md-9 col-xs-9" style="width:135%;padding-left:0px;padding-right:0px;">
-        <div class="row">
-        <div class="col-lg-12 col-md-12 col-xs-12">
-
-
-
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211120145325150219797_2505088453131382_5065949753721898537_n.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Game_Changer_2021/Game_Changer_2021_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">โกงพลิกเกม Game Changer (2021)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211112165434red-notice-617857a07c6d3.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Red_Notice_2021/Red_Notice_2021_TH_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Red Notice (2021) NETFLIX</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211112121732batman-year-one-52b197e1e556a.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Batman_Year_One_2011/Batman_Year_One_2011_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Batman: Year One ศึกอัศวินแบทแมน ปี 1 (2011)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/202111120833487_Prisoners-175754229-large.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/7_Prisoners_2021/7_Prisoners_2021_ST_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">7 Prisoners 7 นักโทษ (2021) NETFLIX บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211107162546z1eMj2FxgOBIqAcOIUXAiBIn74K.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Killer_Elite_1975/The_Killer_Elite_1975_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Killer Elite (1975) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211106093441AAAABXO9CH2ncg8iNss91d0m7qYjlvJFvaxlEVmrf2KcuMatba8wQDI1F2YbhqGZURIO0Gj-8zu8ofiE6hkkDPOh9ceH1yhzVQE5Rvoi61bluHF2ZXRPMvU9NpoYvQm9Iw.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Yara_2021/Yara_2021_TH_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Yara หนูน้อยยารา (2021) NETFLIX</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211104093027snakehead.224863.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Snakehead_2021/Snakehead_2021_EN_1080p_T.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Snakehead (2021) บรรยายไทยแปล</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211102082530q4h2XjhryLMtYZxRCmg2KwgSHUN.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Zola_2020/Zola_2020_en_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Zola (2020) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211101160319dark-blue-583ea07227e12.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Dark_Blue_2002/Dark_Blue_2002_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Dark Blue มือปราบ ห่าม ดิบ เถื่อน (2002)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211031174716aZKGkQ9rpMyQ75sbdLnpmiM3m73.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Legal_Eagles_1986/Legal_Eagles_1986_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Legal Eagles (1986) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211030164604bones-5f32460b84354.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Bones_2001/Bones_2001_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Bones อมตะพันธุ์อำมหิต (2001)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211030093155army-of-thieves.224557.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Army_of_Thieves_2021/Army_of_Thieves_2021_TH_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Army of Thieves แผนปล้นยุโรปเดือด (2021) NETFLIX</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211029110235the-many-saints-of-newark-6102cff664ad3.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Many_Saints_of_Newark_2021/The_Many_Saints_of_Newark_2021_en_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Many Saints of Newark (2021) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211027110002harper-5e00f1d2869d4.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Harper_1966/Harper_1966_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Harper (1966) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211026084050no-way-out-56ef19552ec5c.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/No_Way_Out_1987/No_Way_Out_1987_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">No Way Out ผ่าทางตัน (1987)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211024152103the-january-man-5dfc901212cbb.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_January_Man_1989/The_January_Man_1989_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The January Man คดีราศีมรณะ (1989) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211020180446unnamed.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Night_Teeth_2021/Night_Teeth_2021_TH_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Night Teeth เขี้ยวราตรี (2021) NETFLIX</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211020142110bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Fast_and_Furious_F9_The_Fast_Saga_2021/Fast_and_Furious_F9_The_Fast_Saga_2021_th_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Fast and Furious F9: The Fast Saga เร็ว..แรงทะลุนรก 9 (2021)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211018103540the-long-goodbye-1973.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Long_Goodbye_1973/The_Long_Goodbye_1973_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Long Goodbye (1973) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211017045509uK4x9dw5R9zudfyLKP2SzDaqvjA.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Collectors_2020/Collectors_2020_th_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Collectors รวมกันเราฉก (2020)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211015173339vanguard-5e1769221fbab.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Vanguard_2020/Vanguard_2020_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Vanguard หน่วยพิทักษ์ฟัดข้ามโลก แวนการ์ด (2020)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211015155551bugsy-5669b8e446908.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Bugsy_1991/Bugsy_1991_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Bugsy บักซี่ (1991) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211015153229man-of-the-house-55f4317851215.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Man_of_the_House_2005/Man_of_the_House_2005_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Man of the House ยอดพิทักษ์พันธุ์เก๋ากับก๊วนสาววี๊ดบึ๊ม (2005) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211015151328shorta-602a6178a4fa3.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Enforcement_2020/Enforcement_2020_ST_1080p_T.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Enforcement (Shorta) (2020) บรรยายไทยแปล</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211014160409images (2).jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Operation_Hyacinth_2021/Operation_Hyacinth_2021_ST_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Operation Hyacinth (Hiacynt) ปฏิบัติการไฮยาซินธ์ (2021) NETFLIX บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211012095727the-yards-5491f87aafb2c.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Yards_2000/The_Yards_2000_EN_1080p_HDTV.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Yards แหกนรกทรชน (2000) HDTV บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211011022440cPpTuo96CHf5Hm1YgKVvIvMoFZ7.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Midnight_Runners_2017/Midnight_Runners_2017_st_1080p_F.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Midnight Runners (2017) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211010090556hcvjh.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Grudge_2021/Grudge_2021_ST_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Grudge (Kin) อาฆาต (2021) NETFLIX บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/2021100810100697d96054ca7ed9cc4c45571d360ab366c110a23d6fb87823d118877d01c5a448._RI_V_TTW_.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Curse_of_the_Pink_Panther_1983/Curse_of_the_Pink_Panther_1983_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Curse of the Pink Panther สารวัตรซุปเปอร์หลวม (1983) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211008095859trail-of-the-pink-panther-55b955e314ab9.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Trail_of_the_Pink_Panther_1982/Trail_of_the_Pink_Panther_1982_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Trail of the Pink Panther สารวัตรปวดจิต (1982) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211008095606revenge-of-the-pink-panther-5503cebec7c40.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Revenge_of_the_Pink_Panther_1978/Revenge_of_the_Pink_Panther_1978_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Revenge of the Pink Panther สารวัตรปืนฝืด ภาค 2 (1978) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/2021100809433671qyLvribXL._RI_.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/House_of_Games_1987/House_of_Games_1987_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">House of Games (1987) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211005174346hoodlum-5afde57ab639e.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Hoodlum_1997/Hoodlum_1997_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Hoodlum (1997) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211005165440outland-52d8619bd7f35.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Outland_1981/Outland_1981_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Outland (1981) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211005090307married-to-the-mob-5a16feacaf39e.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Married_to_the_Mob_1988/Married_to_the_Mob_1988_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Married to the Mob (1988) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211004090542poster-780.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Forever_Rich_2021/Forever_Rich_2021_EN_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Forever Rich ฟอร์เอเวอร์ ริช (2021) NETFLIX บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/202110031119082f215d5e73eee649fd598da88a0703b31b0bc39493caffccceedb979c0687037._RI_V_TTW_.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Defendor_2009/Defendor_2009_TH_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Defendor ซุปเปอร์ฮีโร่พันธุ์กิ๊กก๊อก (2009)</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211002090920romeo-is-bleeding-5511381ee1eb2.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Romeo_is_Bleeding_1993/Romeo_is_Bleeding_1993_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Romeo Is Bleeding (1993) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/202109211844398daec1de90f35fe4866ade588cdc2186_image.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Guilty_2021/The_Guilty_2021_TH_1080p_NF.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Guilty (2021) NETFLIX</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20211001091635on-the-waterfront-5cf939ca960e4.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/On_the_Waterfront_1954/On_the_Waterfront_1954_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">On the Waterfront (1954) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210930094235ouL2ibaIdTMobM1CUlZxKauJBaM.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/True_Believer_1989/True_Believer_1989_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">True Believer (1989) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210929175833rivers-edge.29646.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/River_s_Edge_1986/River_s_Edge_1986_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">River's Edge ศพกลางน้ำ (1986) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210929175038the-package-55d7ad93cc7c5.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Package_1989/The_Package_1989_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">The Package แผนดับคนดังหลังม่านเหล็ก (1989) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210929082459dom-hemingway-5340410723df8.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Dom_Hemingway_2013/Dom_Hemingway_2013_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Dom Hemingway จอมโจรกลับใจ (2013) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/2021092810503042HMFxeLLhJqYpWzA3cIDM59Ope.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/White_Lightning_1973/White_Lightning_1973_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">White Lightning (1973) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210928093058gang-related-56563385e9281.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Gang_Related_1997/Gang_Related_1997_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Gang Related (1997) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210927100602323cc8c4b029528c19bee56a849aa33c6135eaea5dd63b9d2a438b110696e4eb._RI_V_TTW_.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Cutter_s_Way_1981/Cutter_s_Way_1981_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Cutter's Way (1981) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210925092001witness-for-the-prosecution-540b7d73bb55a.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Witness_for_the_Prosecution_1957/Witness_for_the_Prosecution_1957_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Witness for the Prosecution หักเหลี่ยมทนาย (1957) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210925084148261a56cc9718a02e7dce7bf6ac2ca665acc5817a53cad102de669e25ce53ad6d._RI_V_TTW_.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Amos_and_Andrew_1993/Amos_and_Andrew_1993_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">Amos & Andrew ไล่ล่าอลเวง (1993) บรรยายไทย</p></center>
-            </div>
-            
-            <div class="col-md-2 col-sm-2 col-xs-2 m-col-md-2" style="width:20%;height:300px;padding:10px">
-                <div class="movie-box">
-                    <div class="movie-image">
-                        <button class="btn btn-default btn-block btn-lg" type="button" style="background-size:cover;background-image:url(https://img.fw4free.com/postor/20210924120352qwTwHKesH4QcvSBkS1dE89AIFst.jpg);width:175px;height:255.45px;background-position: center center;" onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/True_Сonfessions_1981/True_Сonfessions_1981_EN_1080p.mp4/playlist.m3u8'" autofocus="">
-                        </button>
-                    </div>
-                </div>
-                <center><p style="color:white">True Confessions (1981) บรรยายไทย</p></center>
-            </div>
-                                                         
-
-
- 
-
-<div class="col-lg-12 col-md-12 col-xs-12">
-	<div class="example" align="center">
-		<nav>
-			<ul class="pagination">
-				<li><a href="go:main-fw" aria-label="กลับหน้าแรก"><span aria-hidden="true"><< หน้าแรก</span></a></li>		
-		 				 <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (16).html"><b>16</b></a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (17).html'>17</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (18).html'>18</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (19).html'>19</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (20).html'>20</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (21).html'>21</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (22).html'>22</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (23).html'>23</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (24).html'>24</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (25).html'>25</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy26.html'>26</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy27.html'>27</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy28.html'>28</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy29.html'>29</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy30.html'>30</a></li>
-										<li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime (17).html'>หน้าต่อไป»</a></li>
-						<li><a href='https://udzaa2238.github.io/fw4free-action/fw4free-app24-comedy30.html'>  หน้าสุดท้าย» </a></li>
-			</ul>
-		</nav>
-	</div>
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211120145325150219797_2505088453131382_5065949753721898537_n.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Game_Changer_2021/Game_Changer_2021_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">โกงพลิกเกม Game Changer (2021)</div>
 </div>
 
 
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211112165434red-notice-617857a07c6d3.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Red_Notice_2021/Red_Notice_2021_TH_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Red Notice (2021) NETFLIX</div>
+</div>
 
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211112121732batman-year-one-52b197e1e556a.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Batman_Year_One_2011/Batman_Year_One_2011_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Batman: Year One ศึกอัศวินแบทแมน ปี 1 (2011)</div>
 </div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202111120833487_Prisoners-175754229-large.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/7_Prisoners_2021/7_Prisoners_2021_ST_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">7 Prisoners 7 นักโทษ (2021) NETFLIX บรรยายไทย</div>
 </div>
-</div>  
-</div> 
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211107162546z1eMj2FxgOBIqAcOIUXAiBIn74K.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Killer_Elite_1975/The_Killer_Elite_1975_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Killer Elite (1975) บรรยายไทย</div>
 </div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211106093441AAAABXO9CH2ncg8iNss91d0m7qYjlvJFvaxlEVmrf2KcuMatba8wQDI1F2YbhqGZURIO0Gj-8zu8ofiE6hkkDPOh9ceH1yhzVQE5Rvoi61bluHF2ZXRPMvU9NpoYvQm9Iw.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Yara_2021/Yara_2021_TH_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Yara หนูน้อยยารา (2021) NETFLIX</div>
 </div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211104093027snakehead.224863.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Snakehead_2021/Snakehead_2021_EN_1080p_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Snakehead (2021) บรรยายไทยแปล</div>
 </div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211102082530q4h2XjhryLMtYZxRCmg2KwgSHUN.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Zola_2020/Zola_2020_en_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Zola (2020) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211101160319dark-blue-583ea07227e12.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Dark_Blue_2002/Dark_Blue_2002_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Dark Blue มือปราบ ห่าม ดิบ เถื่อน (2002)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211031174716aZKGkQ9rpMyQ75sbdLnpmiM3m73.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Legal_Eagles_1986/Legal_Eagles_1986_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Legal Eagles (1986) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211030164604bones-5f32460b84354.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Bones_2001/Bones_2001_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Bones อมตะพันธุ์อำมหิต (2001)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211030093155army-of-thieves.224557.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Army_of_Thieves_2021/Army_of_Thieves_2021_TH_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Army of Thieves แผนปล้นยุโรปเดือด (2021) NETFLIX</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211029110235the-many-saints-of-newark-6102cff664ad3.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Many_Saints_of_Newark_2021/The_Many_Saints_of_Newark_2021_en_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Many Saints of Newark (2021) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211027110002harper-5e00f1d2869d4.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Harper_1966/Harper_1966_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Harper (1966) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211026084050no-way-out-56ef19552ec5c.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/No_Way_Out_1987/No_Way_Out_1987_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">No Way Out ผ่าทางตัน (1987)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211024152103the-january-man-5dfc901212cbb.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_January_Man_1989/The_January_Man_1989_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The January Man คดีราศีมรณะ (1989) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211020180446unnamed.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Night_Teeth_2021/Night_Teeth_2021_TH_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Night Teeth เขี้ยวราตรี (2021) NETFLIX</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211020142110bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Fast_and_Furious_F9_The_Fast_Saga_2021/Fast_and_Furious_F9_The_Fast_Saga_2021_th_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Fast and Furious F9: The Fast Saga เร็ว..แรงทะลุนรก 9 (2021)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211018103540the-long-goodbye-1973.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Long_Goodbye_1973/The_Long_Goodbye_1973_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Long Goodbye (1973) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211017045509uK4x9dw5R9zudfyLKP2SzDaqvjA.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Collectors_2020/Collectors_2020_th_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Collectors รวมกันเราฉก (2020)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211015173339vanguard-5e1769221fbab.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Vanguard_2020/Vanguard_2020_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Vanguard หน่วยพิทักษ์ฟัดข้ามโลก แวนการ์ด (2020)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211015155551bugsy-5669b8e446908.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Bugsy_1991/Bugsy_1991_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Bugsy บักซี่ (1991) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211015153229man-of-the-house-55f4317851215.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Man_of_the_House_2005/Man_of_the_House_2005_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Man of the House ยอดพิทักษ์พันธุ์เก๋ากับก๊วนสาววี๊ดบึ๊ม (2005) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211015151328shorta-602a6178a4fa3.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Enforcement_2020/Enforcement_2020_ST_1080p_T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Enforcement (Shorta) (2020) บรรยายไทยแปล</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211014160409images (2);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Operation_Hyacinth_2021/Operation_Hyacinth_2021_ST_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Operation Hyacinth (Hiacynt) ปฏิบัติการไฮยาซินธ์ (2021) NETFLIX บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211012095727the-yards-5491f87aafb2c.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Yards_2000/The_Yards_2000_EN_1080p_HDTV.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Yards แหกนรกทรชน (2000) HDTV บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211011022440cPpTuo96CHf5Hm1YgKVvIvMoFZ7.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Midnight_Runners_2017/Midnight_Runners_2017_st_1080p_F.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Midnight Runners (2017) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211010090556hcvjh.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Grudge_2021/Grudge_2021_ST_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Grudge (Kin) อาฆาต (2021) NETFLIX บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2021100810100697d96054ca7ed9cc4c45571d360ab366c110a23d6fb87823d118877d01c5a448._RI_V_TTW_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Curse_of_the_Pink_Panther_1983/Curse_of_the_Pink_Panther_1983_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Curse of the Pink Panther สารวัตรซุปเปอร์หลวม (1983) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211008095859trail-of-the-pink-panther-55b955e314ab9.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Trail_of_the_Pink_Panther_1982/Trail_of_the_Pink_Panther_1982_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trail of the Pink Panther สารวัตรปวดจิต (1982) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211008095606revenge-of-the-pink-panther-5503cebec7c40.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Revenge_of_the_Pink_Panther_1978/Revenge_of_the_Pink_Panther_1978_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Revenge of the Pink Panther สารวัตรปืนฝืด ภาค 2 (1978) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2021100809433671qyLvribXL._RI_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/House_of_Games_1987/House_of_Games_1987_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">House of Games (1987) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211005174346hoodlum-5afde57ab639e.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Hoodlum_1997/Hoodlum_1997_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Hoodlum (1997) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211005165440outland-52d8619bd7f35.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Outland_1981/Outland_1981_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Outland (1981) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211005090307married-to-the-mob-5a16feacaf39e.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Married_to_the_Mob_1988/Married_to_the_Mob_1988_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Married to the Mob (1988) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211004090542poster-780.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Forever_Rich_2021/Forever_Rich_2021_EN_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Forever Rich ฟอร์เอเวอร์ ริช (2021) NETFLIX บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202110031119082f215d5e73eee649fd598da88a0703b31b0bc39493caffccceedb979c0687037._RI_V_TTW_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Defendor_2009/Defendor_2009_TH_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Defendor ซุปเปอร์ฮีโร่พันธุ์กิ๊กก๊อก (2009)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211002090920romeo-is-bleeding-5511381ee1eb2.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Romeo_is_Bleeding_1993/Romeo_is_Bleeding_1993_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Romeo Is Bleeding (1993) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202109211844398daec1de90f35fe4866ade588cdc2186_image.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Guilty_2021/The_Guilty_2021_TH_1080p_NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Guilty (2021) NETFLIX</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20211001091635on-the-waterfront-5cf939ca960e4.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/On_the_Waterfront_1954/On_the_Waterfront_1954_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">On the Waterfront (1954) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210930094235ouL2ibaIdTMobM1CUlZxKauJBaM.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/True_Believer_1989/True_Believer_1989_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Believer (1989) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210929175833rivers-edge.29646.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/River_s_Edge_1986/River_s_Edge_1986_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">River&#x27;s Edge ศพกลางน้ำ (1986) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210929175038the-package-55d7ad93cc7c5.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The_Package_1989/The_Package_1989_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Package แผนดับคนดังหลังม่านเหล็ก (1989) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210929082459dom-hemingway-5340410723df8.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Dom_Hemingway_2013/Dom_Hemingway_2013_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Dom Hemingway จอมโจรกลับใจ (2013) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2021092810503042HMFxeLLhJqYpWzA3cIDM59Ope.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/White_Lightning_1973/White_Lightning_1973_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">White Lightning (1973) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210928093058gang-related-56563385e9281.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Gang_Related_1997/Gang_Related_1997_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Gang Related (1997) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210927100602323cc8c4b029528c19bee56a849aa33c6135eaea5dd63b9d2a438b110696e4eb._RI_V_TTW_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Cutter_s_Way_1981/Cutter_s_Way_1981_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cutter&#x27;s Way (1981) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210925092001witness-for-the-prosecution-540b7d73bb55a.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Witness_for_the_Prosecution_1957/Witness_for_the_Prosecution_1957_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Witness for the Prosecution หักเหลี่ยมทนาย (1957) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210925084148261a56cc9718a02e7dce7bf6ac2ca665acc5817a53cad102de669e25ce53ad6d._RI_V_TTW_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Amos_and_Andrew_1993/Amos_and_Andrew_1993_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Amos &amp; Andrew ไล่ล่าอลเวง (1993) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20210924120352qwTwHKesH4QcvSBkS1dE89AIFst.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/True_Сonfessions_1981/True_Сonfessions_1981_EN_1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Confessions (1981) บรรยายไทย</div>
+</div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination-wrapper">
+            <nav>
+              <ul class="pagination">
+                <li><a href="go:main-fw" aria-label="กลับหน้าหลัก"><span aria-hidden="true"><< กลับหน้าหลัก</span></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime11.html">11</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime12.html">12</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime13.html">13</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime14.html">14</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime15.html">15</a></li>
+      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime16.html"><b>16</b></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime17.html">17</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime18.html">18</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime19.html">19</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime20.html">20</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime21.html">หน้าต่อไป»</a></li>
+      <li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime50.html'>  หน้าสุดท้าย» </a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

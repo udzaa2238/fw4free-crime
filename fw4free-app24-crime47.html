@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>fw4free-app24-crimes 47 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+ <style>
+    html, body { margin:0; padding:0; width:100vw; height:100%; background:#000; box-sizing:border-box; overflow-x:hidden; font-family:'Roboto Condensed',sans-serif; }
+    *, *:before,*:after { box-sizing:inherit; }
+    .filter-bar { margin:10px 0; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .filter-bar input, .filter-bar select { padding:8px; font-size:16px; border-radius:4px; border:1px solid #444; background:#1f2025; color:#fff; }
+    .movies-grid { display:flex; flex-wrap:wrap; gap:10px; margin:0 -5px; padding-top:10px; }
+    .movie-item { flex:0 0 10%; box-sizing:border-box; padding:0 5px; margin-bottom:20px; max-width:200px; }
+    .movie-box { background:#1f2025; border-radius:4px; overflow:hidden; position:relative; }
+    .movie-image button { width:100%; height:0; padding-top:147%; background-size:cover; background-position:center; border:none; border-radius:2px; cursor:pointer; }
+    .movie-title { color:white; font-size:14px; text-align:center; margin-top:6px; line-height:1.2; padding:0 4px; word-break:break-word; }
+    @media (max-width:1200px){ .movie-item { flex:0 0 33.333%; } }
+    @media (max-width:900px){ .movie-item { flex:0 0 50%; } }
+    @media (max-width:600px){ .movie-item { flex:0 0 100%; } }
+    .pagination-wrapper { text-align:center; margin-top:20px; }
+    .pagination > li > a, .pagination > li > span { padding:6px 12px; }
+
+    /* pagination hover/focus */
+    .pagination > li > a,
+    .pagination > li > span {
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > a:focus-visible,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li > span:focus-visible {
+      background-color: yellow !important;
+      color: #000 !important;
+      outline: none;
+    }
+    .pagination > li > a.focused { background-color: yellow; color:#000; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      function normalizeText(t){ return (t||'').trim().toLowerCase(); }
+
+      function applyFilter(){
+        const query = normalizeText($("#movie-search").val());
+        const category = normalizeText($("#category-filter").val());
+        $(".movie-item").each(function(){
+          const title= normalizeText($(this).find(".movie-title").text());
+          const itemCat= normalizeText($(this).attr("data-category")||"all");
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if(matchesSearch && matchesCategory) $(this).show(); else $(this).hide();
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+      applyFilter();
+      document.querySelectorAll('.pagination a, .pagination span').forEach(el=>{
+        el.addEventListener('focus', ()=> el.classList.add('focused'));
+        el.addEventListener('blur', ()=> el.classList.remove('focused'));
+      });
+    });
+  </script>
+</head>
+<body>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+        <select id="category-filter">
+        <option value="all">ทั้งหมด</option>
+        <option value="action">action</option>
+        <option value="adventure">adventure</option>
+        <option value="crimes">crimes</option>
+        <option value="comedy">comedy</option>
+        <option value="drama">drama</option>
+        <option value="movies-asia">movies-asia</option>
+     <option value="movies-cartoon">movies-cartoon</option>
+        <option value="movies-horror">movies-horror</option>
+        <option value="movies-inter">movies-inter</option>
+        <option value="mystery">mystery</option>
+        <option value="romance">romance</option>
+        <option value="sci-fi">sci-fi</option>
+        <option value="superhero">superhero</option>
+        <option value="thai-movies">thai-movies</option>
+        <option value="thriller">thriller</option>
+        <option value="thai-series">thai-series</option>
+        <option value="thriller">thriller</option>
+        <option value="movies-war">movies-war</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20181113080723peking-opera-blues-1e6f484a-9ca7-4bd7-b588-515abb03901-resize-750.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Peking-Opera-Blues-1986/Peking-Opera-Blues-1986-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Peking Opera Blues (Do ma daan) เผ็ด สวย ดุ ณ เปไก๋ (1986)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20181002133214ant-man-and-the-wasp-5b11ddf5cb634.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Ant-Man-and-the-Wasp-2018/Ant-Man-and-the-Wasp-2018-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Ant-Man and the Wasp แอนท์-แมน และ เดอะ วอสพ์ (2018)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240813023652hSBnH1Dc3NzZMWtR6qXaNZnKVJY.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Deadpool_2_2018_Super_Duper_Cut/Deadpool_2_2018_Super_Duper_Cut_th_1080_F.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Deadpool 2 เดดพูล 2 (2018) Super Duper Cut</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240813023734to0spRl1CMDvyUbOnbb4fTk3VAd.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Deadpool_2_2018/Deadpool_2_2018_th_1080_F.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Deadpool 2 เดดพูล 2 (2018)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2018090806095281+E9TDE2xL._RI_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Doubles-Cause-Troubles-1989/Doubles-Cause-Troubles-1989-CN-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doubles Cause Troubles (Shen yong shuang mei mai) สวยสองต้องแสบ (1989) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20250120062404MvYpKlpFukTivnlBhizGbkAe3v.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Ocean_s_Eight_2018/Ocean_s_Eight_2018_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Ocean&#x27;s Eight (Ocean&#x27;s 8) โอเชียน 8 (2018)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180805204136MV5BNzM4MTBiZDctZWQ1ZS00YmVlLTlkY2YtODE4N2M3MDkxMzNkXkEyXkFqcGdeQXVyNzI0NzQyNTk@._V1_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Brij-Mohan-Amar-Rahe-2018/Brij-Mohan-Amar-Rahe-2018-HIN-1080p-NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Brij Mohan Amar Rahe โธ่ถัง กรรมของผม! (2018) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180804081256MV5BZTdkMzg3M2ItYmUxYy00NzYwLWFjZjEtNjkxYzljODFiMDY4XkEyXkFqcGdeQXVyMzE4MDkyNTA@._V1_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Steal-My-Heart-2013/Steal-My-Heart-2013-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Steal My Heart (Kaechimi) จิ๊กหัวใจยัยตัวร้าย (2013)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/202503121751541OJ9vkD5xPt3skC6KguyXAgagRZ.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Paddington_2_2017/Paddington_2_2017_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Paddington 2 แพดดิงตัน 2 ของขวัญ...ที่หายไป (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180719181741Front.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Untold-Story-1993/The-Untold-Story-1993-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Untold Story (Bat sin fan dim: Yan yuk cha siu bau) ซาลาเปาเนื้อคน (1993)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180708064733MV5BM2U5NWUzN2EtNjU3MC00MTJlLTk1ZmMtNjBiZWE3Nzk1OTc4XkEyXkFqcGdeQXVyMjgzMDQzNDc@._V1_SY1000_CR0,0,662,1000_AL_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Turn-Left-Turn-Right-2003/Turn-Left-Turn-Right-2003-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Turn Left, Turn Right (Heung joh chow heung yau chow) ผู้หญิงเลี้ยวซ้าย ผู้ชายเลี้ยวขวา (2003)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180704145406king-of-peking.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/King-of-Peking-2018/King-of-Peking-2018-CN-1080p-NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">King of Peking ราชาแห่งปักกิ่ง (2017) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180702130550jing_gu_jyun_ga-261008213-large.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Tricky_Brains_1991/Tricky_Brains_1991_th_720.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Tricky Brains (Jing gu jyun ga) คนกัดคน (1991)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180607074250le-grand-chef-2-kimchi-battle.42247.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Le-Grand-Chef-2-Kimchi-Battle-2010/Le-Grand-Chef-2-Kimchi-Battle-2010-TH-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Le Grand Chef 2: Kimchi Battle (Sik-gaek: Kim-chi-jeon-jaeng) บิ๊กกุ๊กศึกโลกันตร์ 2 ประลองกิมจิ (2010)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180607065001fullsizephoto799387.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Le-Grand-Chef-2007/Le-Grand-Chef-2007-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Le Grand Chef (Sik-gaek) บิ๊กกุ๊กศึกโลกันตร์ (2007)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180606025259the-exclusive-beat-the-devils-tattoo-2015.39171.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Exclusive-Beat-the-Devil-s-Tattoo-2015/The-Exclusive-Beat-the-Devil-s-Tattoo-2015-th-480p.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Exclusive: Beat the Devil&#x27;s Tattoo ยอดนักข่าวกระชากหน้ากากปีศาจ (2015)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180528060429eat-drink-man-woman.30526.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Eat-Drink-Man-Woman-1994/Eat-Drink-Man-Woman-1994-CN-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Eat Drink Man Woman ชิวหาไร้รส (1994) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180525073307Hichki.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Hichki-2018/Hichki-2018-HIN-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Hichki สะอึก (2018) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180508142539jnx.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Bros-2017/The-Bros-2017-KR-1080p-NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Bros กลับบ้านเก่า รักรอเราอยู่ (2017) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/201805050724367244.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/CJ7-2008/CJ7-2008-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">CJ7 (Cheung gong 7 hou) คนเล็กของเล่นใหญ่ (2008)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180426050749the-disaster-artist-5a34e940e7b8a.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Disaster-Artist-2017/The-Disaster-Artist-2017-EN-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Disaster Artist หนังสุดกาก ศิลปินสุดเพี้ยน (2017) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180417060223trick-r-treat-573f765b5cd17.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Trick-r-Treat-2007/Trick-r-Treat-2007-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trick &#x27;r Treat กระตุกขวัญวันปล่อยผี (2007)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180327172626index.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Queen-of-Walking-2016/Queen-of-Walking-2016-th-480p.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen of Walking วิ่งสู้ฝัน ฉันสู้ตาย (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180312095042MV5BN2I0YjNhYzAtMzVlZS00MmQxLTlhYzAtMzhmN2Q2OTU2MmI0XkEyXkFqcGdeQXVyNTE2NDQxMzc@._V1_SY1000_CR0,0,806,1000_AL_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Love-Per-Square-Foot-2018/Love-Per-Square-Foot-2018-EN-1080p-NF.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Love Per Square Foot รักต่อตารางฟุต (2018) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180228155142thumb_3380.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Hong-Harm-Tao-2017/Hong-Harm-Tao-2017-lao-480p-fw.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">หงส์หามเต่า ข้อยตั๊วะเจ้า เฮาฮักกัน Hong Harm Tao (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180227071002soccerkiller.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Soccer-Killer-2017/Soccer-Killer-2017-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soccer Killer ซ็อคเกอร์ คิลเลอร์ (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180220110101MV5BMTkwODAyNzA5OV5BMl5BanBnXkFtZTgwNTM0NjIzMzI@._V1_SY1000_CR0,0,674,1000_AL_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Thor-Ragnarok-2017/Thor-Ragnarok-2017-th-1080p-fw.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Thor: Ragnarok ศึกอวสานเทพเจ้า (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180204205629c04.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/My-PS-Partner-2012/My-PS-Partner-2012-KR-1080p-T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My P.S. Partner (Na-eui PS pa-teu-neo) (2012) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20180201190006vaxhdyje5v6u470.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Village-of-No-Return-2017/The-Village-of-No-Return-2017-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Village of No Return (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20250307154532As8WTtxXs9e3cBit3ztTf7zoRmm.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Olaf_s_Frozen_Adventure_2017/Olaf_s_Frozen_Adventure_2017_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Olaf&#x27;s Frozen Adventure โอลาฟ กับ การผจญภัยอันหนาวเหน็บ (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20240813135438wrXdz7eFZ4l7Eu5bpI3AxkYKcMY.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Kingsman_The_Golden_Circle_2017/Kingsman_The_Golden_Circle_2017_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Kingsman: The Golden Circle คิงส์แมน รวมพลังโคตรพยัคฆ์ (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171114074112what-a-girl-wants-550874c2629e1.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/What-a-Girl-Wants-2003/What-a-Girl-Wants-2003-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">What a Girl Wants ปรารถนา..ของสาวหัวใจใสใส (2003)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171025073732the-quiet-family-choyonghan-kajok.479.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-Quiet-Family-1998/The-Quiet-Family-1998-KR-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Quiet Family (Choyonghan kajok) ครอบครัวเงียบสงบ (1998)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171024221528891c5533f650e8aa63848d9676d5a4c0.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Battle-Field-Hero-2011/Battle-Field-Hero-2011-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Battlefield Heroes (Pyeong-yang-seong) ผู้กล้า (ไม่) ท้าสู้ (2011)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171024220850195538.38599674_1000X1000.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Split-Second-Murders-2009/Split-Second-Murders-2009-TH-1080p-HDTV.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Split Second Murders (Sei sung saw liu) ฆาตกรรมแยกที่สอง (2009)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171014175831rob-b-hood-bo-bui-gai-wak.18968.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Rob-B-Hood-2006/Rob-B-Hood-2006-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Robin-B-Hood (Bo bui gai wak) วิ่งกระเตงฟัด (2006)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171004113003MV5BZGMwOGYxMmEtOTVmOS00YmMzLWJiNWEtNzhjYzkyNzIxMzMwL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/How-to-Choose-a-Royal-Bride-1985/How-to-Choose-a-Royal-Bride-1985-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">How to Choose a Royal Bride (Tian guan ci fu) ทรามวัยโดนใจ สะกิดหัวใจให้โดนเธอ (1985)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20171004111500hCBxKiPlvCq7Oe85cDcWIEIuHqG.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Young-People-1972/Young-People-1972-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Young People (Nian qing ren) ไอ้หนุ่ม 3 เสือ (1972)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2017100410173474474574gw1f6ww193ugzj20l20u046x.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Hex-After-Hex-1982/Hex-After-Hex-1982-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Hex after Hex (Che yuen joi che) หลอนสุดหลอน (1982)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170907193814Royal-Tramp-II-images-f00223f2-1d46-4c79-bbb0-3f27db54db9.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Royal-Tramp-II-1992/Royal-Tramp-II-1992-TH-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Royal Tramp II (Lu ding ji II: Zhi shen long jiao) อุ้ยเสี่ยวป้อ จอมยุทธเย้ยยุทธจักร 2 (1992)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170905183605I-Am-Not-Madame-Bovary_poster.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/I-Am-Not-Madame-Bovary-2016/I-Am-Not-Madame-Bovary-2016-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">I Am Not Madame Bovary (Wo bu shi Pan Jin Lian) อย่าคิดหลอกเจ้ (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170901084554ATimeforLove+1970-133-b.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/A-Time-for-Love-1970/A-Time-for-Love-1970-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">A Time For Love (Na ge bu duo qing) รสหวานบนปลายลิ้น (1970)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170806123611tumblr_nzbjd4tSkK1rlrrp9o1_1280.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/You-Are-the-Apple-of-My-Eye-2011/You-Are-the-Apple-of-My-Eye-2011-CN-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">You Are The Apple Of My Eye (Na xie nian, wo men yi qi zhui de nv hai) (2011) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170803103014uiheomhan_sangkyeonrye_2_wi_heom_han_sang_gyeon_rye_2-428653812-large.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Enemies-In-Law-2015/Enemies-In-Law-2015-th-480p.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Enemies In-Law (2015)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170708100830lLmpJ4EJsifL8cKaTarub6HZA7z.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Sholay-1975/Sholay-1975-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Sholay โชเล่ย์ (1975)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170706185105bKWnYYxhaky98AU4bI2ozcvQwaW.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Sad-Movie-2005/Sad-Movie-2005-TH-720p-HDTV.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Sad Movie (Saedeu mubi) อีกนิยามรัก (2005)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170703210708main.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/A-League-of-Their-Own-1992/A-League-of-Their-Own-1992-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">A League of Their Own ผู้หญิงไม่ได้มีไว้รักอย่างเดียว (1992)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170623120429POSTER-28X40-JAPANESE-GIRL-NEVER-DIES.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Japanese-Girls-Never-Die-2016/Japanese-Girls-Never-Die-2016-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Japanese Girls Never Die (Azumi Haruko wa yukue fumei) โมเอะไม่เคยตาย (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2020012814450720 ใหม่ ยูเทิร์นวัย หัวใจรีเทิร์น Suddenly Twenty (2016);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Suddenly-Twenty-2016/Suddenly-Twenty-2016-th-480p-fw.m4v/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">20 ใหม่ ยูเทิร์นวัย หัวใจรีเทิร์น Suddenly Twenty (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170617205624photo_poster_29559_190292_L.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/A-Tale-of-Legendary-Libido-2008/A-Tale-of-Legendary-Libido-2008-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">A Tale of Legendary Libido (Garoojigi) ไอ้หนุ่มพลังช้าง ไวอาก้าเรียกพี่ (2008)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170616101150Golmaal return 2008.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Golmaal-Returns-2008/Golmaal-Returns-2008-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Golmaal Returns ดวงใจบริสุทธิ์ (2008)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170609103318020e69f0256406e1a17365b1556533a8-dragon-lord-1468815721.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Dragon-Lord-1982/Dragon-Lord-1982-TH-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Dragon Lord (Lung siu yeh) เฉินหลงจ้าวมังกร (1982)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/201705282120231529692633-11169764_800.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Rush_Hour_1998/Rush_Hour_1998_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Rush Hour คู่ใหญ่ฟัดเต็มสปีด (1998)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20241012050928mwp7ciG9qdMFG7wB2QDD1MfOJN5.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Rush_Hour_3_2007/Rush_Hour_3_2007_th_1080.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Rush Hour 3 คู่ใหญ่ฟัดเต็มสปีด 3 (2007)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170527111128war_machine_poster.jpeg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/War-Machine-2017/War-Machine-2017-EN-1080p-NF-FWIPTV-HD.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">War Machine วอร์ แมชชีน (2017) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170522101003The-God-of-Cookery-1996-คนเล็กกุ๊กเทวดา.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/The-God-of-Cookery-1996/The-God-of-Cookery-1996-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The God of Cookery (Sik san) คนเล็กกุ๊กเทวดา (1996)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170522100405g1TEbQLDaZ5gBzAfZwfuoVJ8FT8.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/From-Beijing-with-Love-1994/From-Beijing-with-Love-1994-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">From Beijing with Love (Gwok chaan Ling Ling Chat) พยัคฆ์ไม่ร้าย คังคังฉิก (1994)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/201705220958489qZADxKOgwqS3LNW24h6KFwIjvr.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Forbidden-City-Cop-1996/Forbidden-City-Cop-1996-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Forbidden City Cop (Dai lap mat tam 008) สายไม่ลับคังคังโป๋ย (1996)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170522095313Flirting-Scholar-1993.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Flirting-Scholar-1993/Flirting-Scholar-1993-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Flirting Scholar (Tang Bohu dian Qiuxiang) ถังไป่หู่ ใหญ่ไม่ต้องประกาศ (1993)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170522094657nkt9Zd0RYHM.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Fist-of-Fury-1991/Fist-of-Fury-1991-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Fist of Fury (Xin jing wu men) คนเล็กต้องใหญ่ (1991)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170517020430thumb_1826.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie3/Journey-to-the-West-The-Demons-Strike-Back-2017/Journey-to-the-West-The-Demons-Strike-Back-2017-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Journey to the West: The Demons Strike Back ไซอิ๋ว 2017 คนเล็กอิทธิฤทธิ์ใหญ่ (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170510084335MV5BODk3Y2U2YTAtOTA5Yy00NjQ.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/Ten-Years-2015/Ten-Years-2015-TH-480p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Ten Years เท็น เยียร์ส (2015)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170505124544news201701201353465.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/See-You-Tomorrow-2016/See-You-Tomorrow-2016-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">See You Tomorrow รักเธอทุกวันพรุ่งนี้ (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170426072153kung-fu-yoga-chinese-teaser-poster-vertical21x31-copy.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/Kung-Fu-Yoga-2017/Kung-Fu-Yoga-2017-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Kung-Fu Yoga โยคะสู้ฟัด (2017)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20191219085122Hot for Teacher (Nuga geunyeo-wa jasseulkka);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/Hot-For-Teacher-2006/Hot-For-Teacher-2006-TH-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Hot for Teacher (Nuga geunyeo-wa jasseulkka) คุณครูฮอตผมอยากกอดครับ (2006)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2020052216272917 Again 17 ขวบอีกครั้ง...กลับมาแก้ฝันให้เป็นจริง (2009);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/17-Again-2009/17-Again-2009-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">17 Again 17 ขวบอีกครั้ง...กลับมาแก้ฝันให้เป็นจริง (2009)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/2017042217565016872262_1300x1733.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/An-American-Werewolf-in-London-1981/An-American-Werewolf-in-London-1981-EN-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">An American Werewolf in London คนหอนคืนโหด (1981) บรรยายไทย</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20191219084917Rumble in the Bronx ใหญ่ฟัดโลก (1995);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/Rumble-in-the-Bronx-1995/Rumble-in-the-Bronx-1995-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Rumble in the Bronx ใหญ่ฟัดโลก (1995)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170420155104b3d74327728ec9f2eb87e938bada08f2.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/Burn-After-Reading-2008/Burn-After-Reading-2008-th-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Burn After Reading ยกขบวนป่วนซีไอเอ (2008)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521153019Tootsie ทู้ทซี่ (1982);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/Tootsie-1982/Tootsie-1982-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Tootsie ทู้ทซี่ (1982)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521150840What We Do in the Shadows (2014);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/What-We-Do-in-the-Shadows-2014/What-We-Do-in-the-Shadows-2014-EN-1080p-T.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">What We Do in the Shadows (2014) บรรยายไทยแปล</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521150645Young Adult นางสาวตัวแสบแอบตีท้ายครัว (2011);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/Young-Adult-2011/Young-Adult-2011-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Young Adult นางสาวตัวแสบแอบตีท้ายครัว (2011)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521144925Monster Trucks บิ๊กฟุตตะลุยเต็มสปีด (2016);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/Monster-Trucks-2016/Monster-Trucks-2016-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Monster Trucks บิ๊กฟุตตะลุยเต็มสปีด (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170414102500110825_front.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/The-World-According-to-Garp-1982/The-World-According-to-Garp-1982-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The World According to Garp โลกสดใสของนายการ์ป (1982)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20170413200806the-jewel-of-the-nile-1985.35517.jpg);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/The-Jewel-of-the-Nile-1985/The-Jewel-of-the-Nile-1985-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Jewel of the Nile ล่ามรกตมหาภัย 2 ตอน อัญมณีแห่งลุ่มแม่น้ำไนล์ (1985)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521135331The Secret Life of Walter Mitty ชีวิตพิศวงของวอลเตอร์ มิตตี้ (2013);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/The-Secret-Life-of-Walter-Mitty-2013/The-Secret-Life-of-Walter-Mitty-2013-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Secret Life of Walter Mitty ชีวิตพิศวงของวอลเตอร์ มิตตี้ (2013)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20191219084142Railroad Tigers ใหญ่ ปล้น ฟัด (2016);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/Railroad-Tigers-2016/Railroad-Tigers-2016-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Railroad Tigers ใหญ่ ปล้น ฟัด (2016)</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200521134821Frank (2014);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie2/Frank-2014/Frank-2014-TH-1080p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Frank (2014) บรรยายไทยแปล</div>
+</div>
+
+
+<div class="movie-item" data-category="crimes">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button"
+        style="background-image:url(https://img.fw4free.com/postor/20200520145351he Borrowers ฅนมหัศจรรย์ (1997);"
+        onclick="window.location.href='https://m1free.inwstream.com:1936/movie1/The-Borrowers-1997/The-Borrowers-1997-TH-720p.mp4/playlist.m3u8'"
+        autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">he Borrowers ฅนมหัศจรรย์ (1997)</div>
+</div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination-wrapper">
+            <nav>
+              <ul class="pagination">
+                <li><a href="go:main-fw" aria-label="กลับหน้าหลัก"><span aria-hidden="true"><< กลับหน้าหลัก</span></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime41.html">41</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime42.html">42</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime43.html">43</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime44.html">44</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime45.html">45</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime46.html">46</a></li>
+      <li class="active"><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime47.html"><b>47</b></a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime48.html">48</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime49.html">49</a></li>
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime50.html">50</a></li>
+	  <!--
+      <li><a href="https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime41.html">หน้าต่อไป»</a></li>
+      <li><a href='https://udzaa2238.github.io/fw4free-crime/fw4free-app24-crime50.html'>  หน้าสุดท้าย» </a></li>
+	  -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
